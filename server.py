@@ -46,4 +46,4 @@ async def get_api_health() -> dict:
 
 if __name__ == "__main__":
     # STDIO modu için (transport ve port belirtilmez)
-    mcp.run()
+    mcp.run(transport="stdio")

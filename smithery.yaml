@@ -1,10 +1,12 @@
-startCommand:
-  type: stdio
-  configSchema:
-    # JSON Schema defining the configuration options for the MCP.
-    type: object
-    properties: {}
-  commandFunction:
-    |-
-    (config) => ({ command: 'python', args: ['-m', 'server'] })
-  exampleConfig: {}
+version: 1
+start:
+  command: ["python", "server.py"]
+timeout: 60 # STDIO için timeout süresi, gerekirse ayarlanabilir
+environment:
+  PYTHONUNBUFFERED: "1"
+healthCheck:
+  disabled: true # STDIO modunda HTTP health check olmaz
+# network bölümü STDIO için kaldırıldı
+resources:
+  memory: "512Mi"
+  cpu: "0.5"

@@ -1,0 +1,19 @@
+version: 1
+start:
+  command: ["python", "app.py"]
+timeout: 60
+environment:
+  PYTHONUNBUFFERED: "1"
+  PORT: "8000"
+healthCheck:
+  enabled: true
+  path: "/health"
+  interval: 30
+  timeout: 10
+  retries: 3
+network:
+  port: 8000
+  protocol: "http"
+resources:
+  memory: "512Mi"
+  cpu: "0.5"

@@ -45,5 +45,5 @@ async def get_api_health() -> dict:
     return app.get_api_health()
 
 if __name__ == "__main__":
-    # HTTP mode için port belirtiyoruz
-    mcp.run(transport="http", port=8000)
+    # STDIO modu için (transport ve port belirtilmez)
+    mcp.run()

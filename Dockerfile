@@ -27,5 +27,5 @@ ENV PORT=8000
 
 EXPOSE 8000
 
-# HTTP mode için
-CMD ["python", "app.py"]
+# server.py'yi çalıştır
+CMD ["python", "server.py"]

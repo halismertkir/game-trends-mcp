@@ -962,6 +962,3 @@ async def get_api_health() -> dict:
         ]
     }
 
-if __name__ == "__main__":
-    # HTTP mode için port belirtiyoruz
-    mcp.run(transport="http", port=8000)

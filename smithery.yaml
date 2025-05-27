@@ -1,6 +1,6 @@
 version: 1
 start:
-  command: ["python", "app.py"]
+  command: ["python", "server.py"]
 timeout: 60
 environment:
   PYTHONUNBUFFERED: "1"

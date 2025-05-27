@@ -23,9 +23,7 @@ RUN chown -R appuser:appuser /app
 USER appuser
 
 ENV PYTHONUNBUFFERED=1
-ENV PORT=8000
-
-EXPOSE 8000
+# PORT ve EXPOSE STDIO için kaldırıldı
 
 # server.py'yi çalıştır
 CMD ["python", "server.py"]

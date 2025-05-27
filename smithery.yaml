@@ -1,19 +1,12 @@
 version: 1
 start:
   command: ["python", "server.py"]
-timeout: 60
+timeout: 60 # STDIO için timeout süresi, gerekirse ayarlanabilir
 environment:
   PYTHONUNBUFFERED: "1"
-  PORT: "8000"
 healthCheck:
-  enabled: true
-  path: "/health"
-  interval: 30
-  timeout: 10
-  retries: 3
-network:
-  port: 8000
-  protocol: "http"
+  disabled: true # STDIO modunda HTTP health check olmaz
+# network bölümü STDIO için kaldırıldı
 resources:
   memory: "512Mi"
   cpu: "0.5"

@@ -13,9 +13,7 @@ def _get_app_instance():
     if _app_instance is None:
         # app modülünü ve GameAnalyticsApp sınıfını burada import ediyoruz
         # böylece başlangıçta yüklenmemiş oluyorlar.
-        from app import GameAnalyticsApp
         print(f"[{datetime.now()}] Initializing GameAnalyticsApp instance...")
-        _app_instance = GameAnalyticsApp()
     return _app_instance
 
 # MCP Server instance

@@ -28,6 +28,8 @@ RUN chown -R appuser:appuser /app
 USER appuser
 
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/app
+
 
 # Uygulamayı çalıştıracak komut
 CMD ["python", "server.py"]

@@ -1,3 +1,4 @@
+# server.py
 from fastmcp import FastMCP
 from datetime import datetime # get_api_health için eklendi
 
@@ -13,7 +14,9 @@ def _get_app_instance():
     if _app_instance is None:
         # app modülünü ve GameAnalyticsApp sınıfını burada import ediyoruz
         # böylece başlangıçta yüklenmemiş oluyorlar.
+        from app import GameAnalyticsApp # app.py dosyasından GameAnalyticsApp import ediliyor
         print(f"[{datetime.now()}] Initializing GameAnalyticsApp instance...")
+        _app_instance = GameAnalyticsApp()
     return _app_instance
 
 # MCP Server instance
@@ -61,13 +64,10 @@ async def get_all_trending_games() -> dict:
 @mcp.tool()
 async def get_api_health() -> dict:
     """Check the health status of the Gaming Trend Analytics API."""
-    # Bu fonksiyon GameAnalyticsApp örneğini kullanıyorsa _get_app_instance() çağrılmalı.
-    # Mevcut implementasyonda app.get_api_health() çağrılıyor.
     app = _get_app_instance()
+    # GameAnalyticsApp örneği üzerinden get_api_health çağrılıyor
     return app.get_api_health()
-    # Alternatif olarak, eğer bu bilgi tamamen statikse ve app örneğine ihtiyaç duymuyorsa,
-    # doğrudan burada tanımlanabilir veya app örneği oluşturulmadan çağrılabilir bir
-    # statik metod/fonksiyon kullanılabilir. Ancak mevcut yapıya sadık kalıyoruz.
+
 
 if __name__ == "__main__":
     print(f"[{datetime.now()}] MCP Server (server.py) starting in STDIO mode...")

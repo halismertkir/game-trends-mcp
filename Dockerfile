@@ -1,7 +1,7 @@
 FROM python:3.11-slim
 
 # Set working directory
-WORKDIR /
+WORKDIR /app
 
 # Copy requirements first to leverage Docker cache
 COPY requirements.txt .
@@ -12,7 +12,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the application
 COPY . .
 
-# Set Python p
+# Set Python path
+ENV PYTHONPATH=/app
 
 # Default command (will be overridden by Smithery)
 CMD ["python", "-m", "server"]

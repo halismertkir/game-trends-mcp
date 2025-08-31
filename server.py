@@ -70,8 +70,8 @@ async def get_api_health() -> dict:
 
 
 if __name__ == "__main__":
-    print(f"[{datetime.now()}] MCP Server (server.py) starting in STDIO mode...")
+    print(f"[{datetime.now()}] MCP Server (server.py) starting in HTTP mode...")
     # FastMCP araç kaydı, dekoratörler işlendiğinde (modül yükleme zamanında) gerçekleşir.
     # Bu kısım hızlı olmalıdır. GameAnalyticsApp'in asıl başlatılması ertelenmiştir.
-    mcp.run()
+    mcp.run(transport="http")
     print(f"[{datetime.now()}] MCP Server (server.py) finished.")

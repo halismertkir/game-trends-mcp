@@ -1,7 +1,7 @@
 # Smithery yapılandırma dosyası: https://smithery.ai/docs/build/project-config
 
 startCommand:
-  type: stdio
+  type: http
   configSchema:
     # Bu MCP için kullanıcı tarafından sağlanacak yapılandırma seçenekleri.
     # Mevcut durumda, bu proje kullanıcıdan özel bir yapılandırma almamaktadır.

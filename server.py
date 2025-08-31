@@ -70,8 +70,14 @@ async def get_api_health() -> dict:
 
 
 if __name__ == "__main__":
-    print(f"[{datetime.now()}] MCP Server (server.py) starting in HTTP mode...")
+    import os
+    # Port ve host'u environment variable'lardan al, yoksa varsayılan değerleri kullan
+    host = os.getenv("HOST", "0.0.0.0")  # 0.0.0.0 ile tüm network interface'lerden erişim sağla
+    port = int(os.getenv("PORT", 8080))   # Smithery deployment için 8080 port kullan
+    
+    print(f"[{datetime.now()}] MCP Server (server.py) starting in HTTP mode on {host}:{port}...")
+    print(f"[{datetime.now()}] MCP endpoint will be available at: http://{host}:{port}/mcp")
     # FastMCP araç kaydı, dekoratörler işlendiğinde (modül yükleme zamanında) gerçekleşir.
     # Bu kısım hızlı olmalıdır. GameAnalyticsApp'in asıl başlatılması ertelenmiştir.
-    mcp.run(transport="http")
+    mcp.run(transport="http", host=host, port=port)
     print(f"[{datetime.now()}] MCP Server (server.py) finished.")

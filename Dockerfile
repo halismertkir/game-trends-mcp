@@ -15,5 +15,12 @@ COPY . .
 # Set Python path
 ENV PYTHONPATH=/app
 
-# Default command (will be overridden by Smithery)
-CMD ["python", "-m", "server"]
+# Expose the port for HTTP MCP server
+EXPOSE 8080
+
+# Set default environment variables
+ENV HOST=0.0.0.0
+ENV PORT=8080
+
+# Default command for HTTP mode
+CMD ["python", "server.py"]
